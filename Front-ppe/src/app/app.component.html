@@ -1,0 +1,85 @@
+<mat-toolbar class="navbar">
+  <div
+    style="
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    "
+  >
+    <strong style="color: red;">TUN</strong>
+    recrut
+  </div>
+  <div>
+    <span
+      style="
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      "
+      [routerLink]="['/home']"
+      routerLinkActive="router-link-active"
+      >Offers</span
+    >
+    <span
+      style="
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      "
+      [routerLink]="['/compteRecruteur']"
+      routerLinkActive="router-link-active"
+      >Compte</span
+    >
+    <span
+      *ngIf="this.auth.roleU == 'admin'"
+      style="
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      "
+      [routerLink]="['/dash']"
+      routerLinkActive="router-link-active"
+    >
+      Dashbord</span
+    >
+    <span
+      style="
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      "
+      [routerLink]="['/Tanit']"
+      routerLinkActive="router-link-active"
+      >Offres TanitJob</span
+    >
+    <span
+      style="
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      "
+      >About</span
+    >
+
+    <span
+      ><button
+        *ngIf="this.auth.bool"
+        mat-raised-button
+        color="success"
+        routerLink="/login"
+      >
+        Login
+      </button></span
+    >
+    <span
+      ><button
+        *ngIf="this.auth.bool"
+        mat-raised-button
+        color="success"
+        routerLink="/register"
+      >
+        register
+      </button></span
+    >
+    <span
+      ><button
+        *ngIf="!this.auth.bool"
+        mat-raised-button
+        color="success"
+        routerLink="/login"
+      >
+        Logout
+      </button></span
+    >
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

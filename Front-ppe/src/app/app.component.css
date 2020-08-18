@@ -1,0 +1,17 @@
+.navbar {
+  background-color: black;
+  justify-content: space-between;
+  color: azure;
+}
+
+span {
+  padding-right: 1rem;
+}
+
+
+
+.mat-success {
+  background-color: #FFC312;
+  color: black;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

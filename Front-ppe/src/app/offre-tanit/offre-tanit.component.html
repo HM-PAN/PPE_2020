@@ -1,0 +1,83 @@
+<!-- <h2>List Of Offres WebScraping</h2>>
+<ul *ngFor="let data of webData">
+  <li>{{ data.Headline }}</li>
+  <li>{{ data.Description }}</li>
+</ul>
+<mat-expansion-panel *ngFor="let data of webData
+          | paginate: { itemsPerPage: 10, currentPage: page}">
+  <mat-expansion-panel-header class="right-aligned-header">
+    <mat-panel-title>{{ data.Headline }}</mat-panel-title>
+    <mat-panel-description>Click To See !</mat-panel-description>
+  </mat-expansion-panel-header>
+  {{ data.Description }}
+</mat-expansion-panel> -->
+
+<body>
+  <div class="container">
+    <div class="mat-display-3"
+      style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: #FFC312;">Get Your Job
+    </div>
+    <form class="example-form" style="display: inline-flex; padding: 30px; padding-left: 30px;">
+      <mat-form-field class="example-full-width">
+        <mat-label>Search</mat-label>
+        <input (keyup)="search()" [(ngModel)]="sear" name="first" matInput placeholder="Ex. It engineering"
+          style="background-color: whitesmoke;height: 40px;">
+
+      </mat-form-field>
+      <div class="example-button-container">
+        <button mat-fab color="warn" aria-label="Example icon button with a home icon">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </form>
+    <div class="container-fluid">
+      <div class="leftnav">
+        <!-- leftnav -->
+        <h4>Filter</h4>
+        <ul>
+          <li (click)="informatique()">Informatique</li>
+          <li (click)="Medical()">Medical</li>
+          <li (click)="agri()">Agriculture</li>
+          <li (click)="call()">Call center</li>
+        </ul>
+
+      </div>
+      <div class="content">
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let data of webData
+          | paginate: { itemsPerPage: 10, currentPage: page}">
+            <mat-expansion-panel-header class="right-aligned-header">
+              <mat-panel-title>{{ data.Headline }}</mat-panel-title>
+              <mat-panel-description>Click To See !</mat-panel-description>
+            </mat-expansion-panel-header>
+            {{ data.Description }}
+          </mat-expansion-panel>
+        </mat-accordion>
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div><!-- content -->
+    </div><!-- container-fluid -->
+  </div> <!-- container -->
+
+
+
+
+</body>
+
+
+
+
+<!--<h2>List Of Offres WebScraping</h2>>
+<ul *ngFor="let data of webData">
+  <li>{{ data.Headline }}</li>
+  <li>{{ data.Description }}</li>
+</ul>
+          <mat-expansion-panel
+          *ngFor="let data of webData
+          | paginate: { itemsPerPage: 10, currentPage: page}" >
+            <mat-expansion-panel-header class="right-aligned-header">
+              <mat-panel-title>{{ data.Headline }}</mat-panel-title>
+              <mat-panel-description>Click To See !</mat-panel-description>
+            </mat-expansion-panel-header>
+            {{ data.Description }}
+          </mat-expansion-panel>
+-->

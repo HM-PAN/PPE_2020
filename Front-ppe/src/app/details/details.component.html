@@ -1,0 +1,30 @@
+<div class="container"  style="margin-top: 30px;">
+  <div class="row" >
+    <div class="col-md-10 border border-warning" >
+      <div>
+     <h1 style="color:red">  BIENVENUE CHEZ {{ offres.nom_entreprise|uppercase}}
+    </h1>
+      <br>
+    </div>
+    <br>
+    <br>
+    <div>
+      <h2 style="color: blue" >  Compétences demandées:<br>
+     </h2>
+     <br>
+     
+     <ul>
+     <li *ngFor="let item of list">
+     {{ item |uppercase}}
+     </li>
+  </ul>
+       <br>
+     </div>
+    
+    </div>
+  </div>
+  <br><br>
+  <div>
+    <button class="btn btn-primary" (click)=" postuler()" > Postuler Now</button>
+  </div>
+</div>

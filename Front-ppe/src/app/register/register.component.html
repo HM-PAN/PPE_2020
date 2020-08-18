@@ -1,0 +1,124 @@
+<!--<div class="container">
+  <br />
+
+  <hr />
+
+  <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 text-center">Create Account</h4>
+      <p class="text-center">Get started with your free account</p>
+      <p>
+        <a href="" class="btn btn-block btn-twitter">
+          <i class="fab fa-twitter"></i> Login As Recrutuer</a>
+      </p>
+      <p class="divider-text">
+        <span class="bg-light">OR</span>
+      </p>
+      <form #f="ngForm" (ngSubmit)="addCandidat(f.value);addCandidatToElastic()">
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          </div>
+          <input name="nom" [(ngModel)]="candidat.nom" class="form-control" placeholder="nom" type="text" />
+        </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          </div>
+          <input name="prenom" [(ngModel)]="candidat.prenom" class="form-control" placeholder="prenom" type="text" />
+        </div>
+
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-envelope"></i>
+            </span>
+          </div>
+          <input name="email" [(ngModel)]="candidat.email" class="form-control" placeholder="Email address"
+            type="email" />
+        </div>
+
+
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+          <input class="form-control" name="password" [(ngModel)]="candidat.password" placeholder="Create password"
+            type="password" />
+        </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+          <input class="form-control" name="repassword" [(ngModel)]="candidat.repassword" placeholder="Repeat password"
+            type="password" />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">
+            Create Account
+          </button>
+        </div>
+        <p class="text-center">Have an account? <a href="">Log In</a></p>
+      </form>
+    </article>
+  </div>
+</div>
+
+<br /><br />
+<article class="bg-secondary mb-3">
+  <div class="card-body text-center">
+    <h3 class="text-white mt-3">Bootstrap 4 UI KIT</h3>
+    <p class="h5 text-white">
+      Components and templates <br />
+      for Ecommerce, marketplace, booking websites and product landing pages
+    </p>
+    <br />
+    <p>
+      <a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/">
+        Bootstrap-ecommerce.com <i class="fa fa-window-restore"></i></a>
+    </p>
+  </div>
+  <br /><br />
+</article> -->
+<div class="container" *ngIf="x">
+  <form #f="ngForm" (ngSubmit)="add(f.value)">
+    <div class="form-group">
+      nom:
+      <input [(ngModel)]="candidat.nom" name="nom" type="text" class="form-control">
+      prenom:
+      <input [(ngModel)]="candidat.prenom" name="prenom" type="text" class="form-control">
+      email:
+      <input [(ngModel)]="candidat.email" name="email" type="email" class="form-control">
+      username:
+      <input [(ngModel)]="candidatE.username" name="username" type="text" class="form-control">
+      password:
+      <input [(ngModel)]="candidatE.password" name="password " type=" password" class="form-control">
+      repassword:
+      <input [(ngModel)]="candidatE.repassword" name="repassword" type=" password" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success"> Submit</button>
+    <button class="btn btn-warning" (click)="rec()"> registerRecruteur</button>
+  </form>
+</div>
+<div class="container" *ngIf="!x">
+  <form #f="ngForm" (ngSubmit)="addR(f.value)">
+    <div class="form-group">
+      nom:
+      <input [(ngModel)]="recruteur.nom" name="nom" type="text" class="form-control">
+      prenom:
+      <input [(ngModel)]="recruteur.prenom" name="prenom" type="text" class="form-control">
+      email:
+      <input [(ngModel)]="recruteur.email" name="email" type="email" class="form-control">
+      nomEntreprise:
+      <input [(ngModel)]="recruteur.nom_entreprise" name="email" type="text" class="form-control">
+
+      username:
+      <input [(ngModel)]="candidatE.username" name="username" type="text" class="form-control">
+      password:
+      <input  type=" password" [(ngModel)]="candidatE.password" name="password "  class="form-control">
+      repassword:
+      <input  type=" password" [(ngModel)]="candidatE.repassword" name="repassword"  class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success"> Submit</button>
+  </form>
+</div>

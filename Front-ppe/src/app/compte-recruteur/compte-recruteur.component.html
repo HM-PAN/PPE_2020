@@ -1,0 +1,181 @@
+<div *ngIf="this.auth.roleU == 'recruteur'">
+  <div class="text-right">
+    <h1 style="color: #92a8d1;">
+      {{ this.auth.nomU | uppercase }}
+
+      <img src="https://tse1.mm.bing.net/th?id=OIP.dH3ix85Yl-s4PbVVfO8OUAHaHa&pid=Api&P=0&w=300&h=300"
+        style="width: 50px; width: 50px;" alt="" />
+    </h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <button class="btn btn-warning btn-block" (click)="changebool()">
+          Voir Liste
+        </button>
+        <ul class="list-group" *ngIf="bool && recruteur.offres && recruteur.offres.length >= 1">
+          <li class="list-group-item" *ngFor="let item of recruteur.offres">
+            {{ item.titre | uppercase }}
+            {{ item.nom_entreprise | uppercase }}
+            <div *ngFor="let ofi of all_offers">
+              <ul *ngIf="ofi.num_offre === item.num_offre">
+                Total can : {{ofi.candidat.length}}
+                list emails : <br>
+                <li *ngFor="let can of ofi.candidat">
+                  {{can.email}}
+                </li>
+              </ul>
+            </div>
+            <button class="btn btn-danger" (click)="deleteOffre(item.num_offre)">Delete</button>
+
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-6">
+        <form #f="ngForm" (ngSubmit)="add(f.value)">
+          <div class="form-group">
+            nomEntreprise
+            <input [(ngModel)]="offre.nom_entreprise" name="nom_entreprise" type="text" class="form-control" />
+            titre
+            <input [(ngModel)]="offre.titre" name="titre" type="text" class="form-control" />
+            domaine
+            <input [(ngModel)]="offre.domaine" name="domaine" type="text" class="form-control" />
+            Capacite:
+            <input [(ngModel)]="offre.capacite" type="number" class="form-control" name="capacite" />
+            date:
+            <input [(ngModel)]="offre.date_Lancement" type="date" class="form-control" name="date_Lancement" />
+
+            date:
+            <input [(ngModel)]="offre.date_Limite" name="date_Limite" type="date" class="form-control" />
+            <br />
+            <br />
+            <button class="btn btn-primary btn-block" type="submit">
+              Ajouter Offre
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ------------------------------------------------------------------------------->
+<div *ngIf="this.auth.roleU == 'candidat'">
+  <div class="text-right">
+    <h1 style="color: #92a8d1;">
+      {{ this.auth.nomU | uppercase }}
+
+      <img src="https://tse1.mm.bing.net/th?id=OIP.dH3ix85Yl-s4PbVVfO8OUAHaHa&pid=Api&P=0&w=300&h=300"
+        style="width: 50px; width: 50px;" alt="" />
+    </h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <button class="btn btn-warning btn-block" (click)="changebool()">
+          Voir Liste
+        </button>
+        <ul class="list-group" *ngIf="bool">
+          <li class="list-group-item" *ngFor="let item of cand.offres">
+            {{ item.titre | uppercase }}
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-6">
+        <form #f="ngForm" (ngSubmit)="addCv(f.value)">
+          <div class="form-group">
+            <button class="btn btn-success" (click)="onedit(cv)">
+              ajouter Cv
+            </button>
+            <p *ngIf="x">
+              <input type="file" (change)="selectFile($event)" />
+              <button class="btn btn-primary" (click)="upload()">upload</button>
+              {{ progress }}
+            </p>
+
+            <br />
+            <br />
+          </div>
+        </form>
+      </div>
+      <button class="btn btn-warning" (click)="voir()">Voir cv</button>
+      <div *ngIf="y">
+        <img height="100" src="{{ 'http://localhost:8005/candidat/cv/photo/' + num }}" />
+      </div>
+    </div>
+  </div>
+</div>
+<!---<form  #f= "ngForm" (ngSubmit)="addCv(f.value)">
+          <div class="form-group">
+            CV:
+            <input [(ngModel)]="cv.contenue" name="nom_entreprise" type="text" class="form-control">
+
+            <br> <br>
+           <button class="btn btn-primary btn-block" type="submit"> Ajouter Cv</button>
+
+          </div>
+        </form> -->
+<div *ngIf="this.auth.roleU == 'admin'">
+  <div class="container" style="margin-top: 5%;">
+    <div class="row">
+      <div class="col-md-6">
+
+
+        <table class="table table-bordered">
+          <thead style="background-color:blue;">
+            <tr style="color: white">
+              <th scope="col">IDC</th>
+              <th scope="col">NomC</th>
+              <th scope="col">DeleteC</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let uni of candi.content">
+              <td>{{uni.id}}</td>
+              <td>{{uni.nom}}</td>
+
+
+              <td><button class="btn btn-danger">Delete</button></td>
+
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+
+
+        <table class="table table-bordered">
+          <thead style="background-color:blue;">
+            <tr style="color: white">
+              <th scope="col">IDR</th>
+              <th scope="col">NomR</th>
+              <th scope="col">DeleteR</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of nomRecruteur.content">
+              <td>{{u.id}}</td>
+              <td>{{u.nom}}</td>
+
+
+              <td><button class="btn btn-danger">Delete</button></td>
+
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<p>offres works!</p>
+<table class="table table-striped">
+  <tr>
+
+    <th>num_offre</th>
+    <th>nom_offre</th>
+    <th>Entreprise</th>
+    <th>Date_Lancement</th>
+    <th>Dta_Limite</th>
+
+    <th></th>
+
+  <tr *ngFor="let c of offres">
+
+    <td>{{c.num_offre}}</td>
+    <td>{{c.nom}}</td>
+    <td>{{c.nom_entreprise}}</td>
+    <td>{{c.date_Lancement}}</td>
+    <td>{{c.date_Limite}}</td>
+
+    <td><a class="btn btn-danger" (click)=" deleteOffre()">Supprimer </a></td>
+    <td><a class="btn btn-success" (click)="editOffre()">Modifier </a></td>
+  </tr>
+
+
+</table>
